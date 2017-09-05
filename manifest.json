@@ -1,0 +1,44 @@
+{
+  "manifest_version": 2,
+
+  "name": "Galileo chrome",
+  "description": "Galileo chrome",
+  "version": "1.0",
+
+  /*"browser_action": {
+   "default_icon": "icon.png",
+   "default_popup": "menu.html"
+  },*/
+  "content_scripts": [
+    {
+      "matches": ["https://galileo.pointec.it/*", "https://puntorigenera.com/multishop/*", "https://www.supplies24.it/*", "https://www.mysda.it/wps/myportal/*"],
+      "js": ["jquery-3.2.1.min.js", "content.js"]
+    }
+  ],
+  "background": {
+    "scripts": ["background.js"]
+  },
+  "permissions": [
+    "activeTab"
+  ],
+  "commands": {
+    "copyaddress": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+U"
+      },
+      "description": "Copia indirizzo da galileo"
+    },
+    "pasteaddress": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+I"
+      },
+      "description": "Incolla indirizzo da galileo"
+    },
+    "paccoanonimo": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+O"
+      },
+      "description": "Pacco anonimo"
+    }
+  }
+}
