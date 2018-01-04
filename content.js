@@ -2,8 +2,8 @@ chrome.extension.onRequest.addListener(function(request, sender, sendResponse) {
 
   if (request.action == "getOrderId") {
     var href = $(location).attr('href');
-    if (href.indexOf("https://galileo.pointec.it/order/view?id=") !== -1)
-      sendResponse({dom: $('#orderid').text()});
+    if (href.indexOf("view_type=form") !== -1 && href.indexOf("model=sale.order") !== -1)
+      sendResponse({dom: $('.order_id span').text()});
     else
       sendResponse({dom: "Errore: Pagina non compatibile con la funzione: ["+href+"]"});
   }
