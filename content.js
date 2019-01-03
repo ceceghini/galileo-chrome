@@ -3,7 +3,7 @@ chrome.extension.onRequest.addListener(function(request, sender, sendResponse) {
   if (request.action == "getOrderId") {
     var href = $(location).attr('href');
     if (href.indexOf("view_type=form") !== -1 && href.indexOf("model=sale.order") !== -1)
-      sendResponse({dom: $('.order_id span').text()});
+      sendResponse({dom: $('span.order_id').text()});
     else
       sendResponse({dom: "Errore: Pagina non compatibile con la funzione: ["+href+"]"});
   }
@@ -11,7 +11,8 @@ chrome.extension.onRequest.addListener(function(request, sender, sendResponse) {
   if (request.action == "pasteAddress") {
 
     var orderid = request.id;
-    var url = "https://galileo.pointec.it/order/paste-address?id="+orderid;
+    //var url = "https://galileo.pointec.it/order/paste-address?id="+orderid;
+    var url = "https://odoo.pointec.it/pointec/order/"+orderid;
     var href = $(location).attr('href');
     var message = "Errore: Pagina non compatibile con la funzione";
 
